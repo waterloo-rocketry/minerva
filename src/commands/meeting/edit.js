@@ -79,7 +79,7 @@ module.exports.parseMeetingBlock = async function (event, parameters) {
     meetingBlock.private_metadata = JSON.stringify(metadata);
 
     meetingBlock.blocks[0].text.text =
-        "Editing meeting: *" + event.summary + "* occuring on *" + moment(event.start.dateTime).tz("America/Toronto").format("MMMM Do, YYYY [at] h:mm A") + "*";
+        "Editing meeting: *" + event.summary + "* occuring on *" + moment(event.start.dateTime).tz(moment.tz.guess()).format("MMMM Do, YYYY [at] h:mm A") + "*";
 
     meetingBlock.blocks[2].element.initial_value = parameters.location;
     meetingBlock.blocks[4].element.initial_value = parameters.link;
